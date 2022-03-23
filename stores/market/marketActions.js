@@ -24,13 +24,12 @@ export const getHoldingsFailure = (error) => ({
 })
 
 export function getHoldings(holdings = [], currency = "usd", orderBy = "market_cap_desc", sparkline = true, priceChangePerc = "7d", perPage = 10, page = 1) {
-
     return dispatch => {
         dispatch(getHoldingsBegin())
-
+        
         let ids = holdings.map((item) => { return item.id }).join(",")
         let apiUrl = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency}&order=${orderBy}&per_page=${perPage}&page=${page}&sparkline=${sparkline}&price_change_percentage=${priceChangePerc}&ids=${ids}`
-
+        
         return axios({
             url: apiUrl,
             method: 'GET',
@@ -38,8 +37,9 @@ export function getHoldings(holdings = [], currency = "usd", orderBy = "market_c
                 Accept: "application/json"
             }
         }).then((response) => {
+           
             console.log("GetHoldings")
-            // console.log(response)
+            console.log(response)
             if (response.status == 200) {
                 // Massage data
                 let myHoldings = response.data.map((item) => {

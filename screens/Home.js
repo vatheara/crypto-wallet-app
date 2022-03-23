@@ -37,9 +37,9 @@ const Home = ({ getHoldings, getCoinMarket, myHoldings, coins }) => {
             <View
                 style={{
                     paddingHorizontal: SIZES.padding,
-                    borderBottomLeftRadius: 25,
-                    borderBottomRightRadius: 25,
-                    backgroundColor: COLORS.gray
+                    borderBottomLeftRadius: 5,
+                    borderBottomRightRadius: 5,
+                    backgroundColor: COLORS.pink
                 }}
             >
                 {/* Balance Info */}
@@ -88,6 +88,7 @@ const Home = ({ getHoldings, getCoinMarket, myHoldings, coins }) => {
 
     return (
         <MainLayout>
+
             <View
                 style={{
                     flex: 1,

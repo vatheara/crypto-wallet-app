@@ -7,7 +7,8 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
 import { connect } from "react-redux";
 import { setTradeModalVisibility } from "../stores/tab/tabActions";
 
-import { Home, Portfolio, Market, Profile } from "../screens"
+import { Home, Portfolio, Market, Profile, Hello } from "../screens"
+import Market2  from "../screens/Market2"
 import { TabIcon } from "../components";
 import { COLORS, icons, SIZES } from "../constants"
 import { isIphoneX } from 'react-native-iphone-x-helper'
@@ -47,6 +48,30 @@ const Tabs = ({ setTradeModalVisibility, isTradeModalVisible }) => {
                 }
             }}
         >
+            <Tab.Screen  
+                name="market2"
+                component={Market2}
+                options={{
+                    tabBarIcon: ({focused}) =>{
+                        if(!isTradeModalVisible) {
+                            return (
+                                <TabIcon 
+                                    focused={focused}
+                                    icon={icons.market}
+                                    label="Market"
+                                />
+                            )
+                        }
+                    }
+                }}
+                listeners={{
+                    tabPress: e => {
+                        if (isTradeModalVisible) {
+                            e.preventDefault()
+                        }
+                    }
+                }}
+            />
             <Tab.Screen
                 name="Home"
                 component={Home}
